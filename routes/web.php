@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/customers', [App\Http\Controllers\CustomerController::class, 'index'])->name('customers');
 Route::get('/site-survey', [App\Http\Controllers\SiteSurveyController::class, 'index'])->name('sitesurvey');
 Route::resource('customers', CustomerController::class);
+Route::resource('/posts', PostController::class);

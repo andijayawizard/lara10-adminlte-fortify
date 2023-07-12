@@ -6,8 +6,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ $title ?? "Reza Nurfachmi @ Laradminlte" }} | Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> --}}
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+<title>{{ $title ?? "Laradminlte" }} | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -15,6 +17,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
+  {{-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> --}}
+  {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -202,17 +207,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="customers" class="nav-link">
+                <a href="/posts" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Posts</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/customers" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Customers</p>
                 </a>
-              </li>              
+              </li>
               <li class="nav-item">
-                <a href="site-survey" class="nav-link">
+                <a href="/site-survey" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Site Survey</p>
                 </a>
-              </li>                            
+              </li>
               <li class="nav-item">
                 <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>

@@ -2,23 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Customer;
-use Illuminate\Http\Request;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
+use App\Models\Post;
 use Illuminate\Support\Facades\Validator;
 
-class CustomerController extends Controller
+class PostController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $customers=Customer::orderBy('id', 'desc')->paginate(10);
-        return view('customers.index', compact('customers'));
+        // $posts=Post::latest()->get();
+        $posts=Post::latest()->paginate(10);
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -26,13 +24,13 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('customers.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         //define validation rules
         $validator = Validator::make($request->all(), [
@@ -46,7 +44,7 @@ class CustomerController extends Controller
         }
 
         //create post
-        $post = Customer::create([
+        $post = Post::create([
             'title'     => $request->title,
             'content'   => $request->content
         ]);
@@ -62,39 +60,32 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Post $post)
     {
-        return view('customers.show', compact('customer'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        return view('customers.edit', compact('customer'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Customer $customer)
+    public function update(UpdatePostRequest $request, Post $post)
     {
-        $request->validate([
-            'nama'=>'required',
-            'email'=>'required',
-            'phone'=>'required',
-        ]);
-        $customer->fill($request->post())->save();
-        return redirect()->route('customers.index')->with('success', 'data updated');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Customer $customer)
+    public function destroy(Post $post)
     {
-        $customer->delete();
-        return redirect()->route('customers.index')->with('success', 'data deleted');
+        //
     }
 }

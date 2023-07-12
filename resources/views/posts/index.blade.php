@@ -1,7 +1,6 @@
 @extends('adminlte.layouts.app')
 
 @section('content')
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -9,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Customers</h1>
+            <h1 class="m-0">Posts</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Customers</li>
+              <li class="breadcrumb-item active">Posts</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -59,7 +58,7 @@
                                             </tr>
                                         </thead>
                                         <tbody id="table-posts">
-                                            @foreach($customers as $post)
+                                            @foreach($posts as $post)
                                             <tr id="index_{{ $post->id }}">
                                                 <td>{{ $post->title }}</td>
                                                 <td>{{ $post->content }}</td>
@@ -75,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                            {!! $customers->links() !!}
+        {!! $posts->links() !!}
                 </div>
             </div>
           </div>
@@ -87,6 +86,5 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
 @endsection
-@include('customers.modal-create')
+@include('posts.modal-create')
